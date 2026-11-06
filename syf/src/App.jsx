@@ -1,0 +1,32 @@
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+
+import Header from "./components/layout/Header.jsx";
+
+import Upload from "./pages/Upload.jsx";
+import Code from "./pages/Code.jsx";
+import Download from "./pages/Download.jsx";
+
+import "./App.css";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Navigate to="/upload" replace />} />
+
+        <Route path="/upload" element={<Upload />} />
+
+        <Route path="/code" element={<Code />} />
+
+        <Route path="/download/:code" element={<Download />} />
+
+        <Route path="*" element={<Navigate to="/upload" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
