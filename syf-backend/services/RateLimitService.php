@@ -1,4 +1,3 @@
-
 <?php
 
 class RateLimitService
@@ -34,7 +33,9 @@ class RateLimitService
             $maxAttempts < 1 ||
             $windowSeconds < 1
         ) {
-            throw new InvalidArgumentException("Invalid rate limit parameters.");
+            throw new InvalidArgumentException(
+                "Invalid rate limit parameters."
+            );
         }
     }
 
@@ -78,16 +79,10 @@ class RateLimitService
             ];
         }
 
-        $now = new DateTimeImmutable("now", new DateTimeZone("UTC"));
-
-        $windowStartedAt = new DateTimeImmutable(
-            $record["window_started_at"],
+        $now = new DateTimeImmutable(
+            "now",
             new DateTimeZone("UTC")
         );
-
-        $windowExpired =
-            ($now->getTimestamp() - $windowStartedAt->getTimestamp())
-            >= $windowSeconds;
 
         $blockedUntil = null;
 
@@ -98,7 +93,27 @@ class RateLimitService
             );
         }
 
-        // Reset the record when the blocking period or window expires.
+        // Check active blocking before checking the window expiration.
+        if ($blockedUntil !== null && $blockedUntil > $now) {
+            return [
+                "blocked" => true,
+                "retryAfter" => max(
+                    1,
+                    $blockedUntil->getTimestamp() - $now->getTimestamp()
+                )
+            ];
+        }
+
+        $windowStartedAt = new DateTimeImmutable(
+            $record["window_started_at"],
+            new DateTimeZone("UTC")
+        );
+
+        $windowExpired =
+            ($now->getTimestamp() - $windowStartedAt->getTimestamp())
+            >= $windowSeconds;
+
+        // Reset when the window or blocking period has expired.
         if (
             $windowExpired ||
             ($blockedUntil !== null && $blockedUntil <= $now)
@@ -121,17 +136,6 @@ class RateLimitService
             return [
                 "blocked" => false,
                 "retryAfter" => 0
-            ];
-        }
-
-        if ($blockedUntil !== null && $blockedUntil > $now) {
-
-            return [
-                "blocked" => true,
-                "retryAfter" => max(
-                    1,
-                    $blockedUntil->getTimestamp() - $now->getTimestamp()
-                )
             ];
         }
 
@@ -160,7 +164,10 @@ class RateLimitService
 
         $keyHash = $this->generateKeyHash($identifier);
 
-        $now = new DateTimeImmutable("now", new DateTimeZone("UTC"));
+        $now = new DateTimeImmutable(
+            "now",
+            new DateTimeZone("UTC")
+        );
 
         $this->db->beginTransaction();
 
@@ -201,17 +208,10 @@ class RateLimitService
             $record = $selectStmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$record) {
-                throw new RuntimeException("Rate limit record not found.");
+                throw new RuntimeException(
+                    "Rate limit record not found."
+                );
             }
-
-            $windowStartedAt = new DateTimeImmutable(
-                $record["window_started_at"],
-                new DateTimeZone("UTC")
-            );
-
-            $windowExpired =
-                ($now->getTimestamp() - $windowStartedAt->getTimestamp())
-                >= $windowSeconds;
 
             $blockedUntil = null;
 
@@ -230,22 +230,29 @@ class RateLimitService
                 return (int) $record["attempts"];
             }
 
+            $windowStartedAt = new DateTimeImmutable(
+                $record["window_started_at"],
+                new DateTimeZone("UTC")
+            );
+
+            $windowExpired =
+                ($now->getTimestamp() - $windowStartedAt->getTimestamp())
+                >= $windowSeconds;
+
             // Start a new window if the previous one expired.
-            if (
+            $resetWindow =
                 $windowExpired ||
-                ($blockedUntil !== null && $blockedUntil <= $now)
-            ) {
-                $attempts = 0;
-            } else {
-                $attempts = (int) $record["attempts"];
-            }
+                ($blockedUntil !== null && $blockedUntil <= $now);
+
+            $attempts = $resetWindow
+                ? 0
+                : (int) $record["attempts"];
 
             $attempts++;
 
             $newBlockedUntil = null;
 
             if ($attempts >= $maxAttempts) {
-
                 $newBlockedUntil = $now
                     ->modify("+" . $windowSeconds . " seconds")
                     ->format("Y-m-d H:i:s");
@@ -262,10 +269,7 @@ class RateLimitService
 
             $updateStmt->execute([
                 ":attempts" => $attempts,
-                ":window_started_at" => (
-                    $windowExpired ||
-                    ($blockedUntil !== null && $blockedUntil <= $now)
-                )
+                ":window_started_at" => $resetWindow
                     ? $now->format("Y-m-d H:i:s")
                     : $record["window_started_at"],
                 ":blocked_until" => $newBlockedUntil,
@@ -288,31 +292,31 @@ class RateLimitService
     }
 
     /**
- * Clear failed attempts after successful password verification.
- */
-public function clearLimit(
-    string $action,
-    string $identifier
-): void {
+     * Clear failed attempts after successful password verification.
+     */
+    public function clearLimit(
+        string $action,
+        string $identifier
+    ): void {
 
-    $this->validateParameters(
-        $action,
-        $identifier,
-        1,
-        1
-    );
+        $this->validateParameters(
+            $action,
+            $identifier,
+            1,
+            1
+        );
 
-    $keyHash = $this->generateKeyHash($identifier);
+        $keyHash = $this->generateKeyHash($identifier);
 
-    $sql = "DELETE FROM rate_limits
-            WHERE action = :action
-            AND key_hash = :key_hash";
+        $sql = "DELETE FROM rate_limits
+                WHERE action = :action
+                AND key_hash = :key_hash";
 
-    $stmt = $this->db->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
-    $stmt->execute([
-        ":action" => $action,
-        ":key_hash" => $keyHash
-    ]);
-}
+        $stmt->execute([
+            ":action" => $action,
+            ":key_hash" => $keyHash
+        ]);
+    }
 }

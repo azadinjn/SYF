@@ -33,32 +33,36 @@ class UploadController {
                 "message" => "Method not allowed."
             ];
         }
-
-        //  Rate limiting
+        
+                
+        // Rate limiting
         $identifier = $_SERVER["REMOTE_ADDR"] ?? "unknown";
-
+        
         $limit = $this->rateLimitService->checkLimit(
             "upload",
             $identifier,
             10,
             900
         );
-
+        
         if ($limit["blocked"]) {
-            //  Record upload request
-            $this->rateLimitService->recordFailure(
-                "upload",
-                $identifier,
-                10,
-                900
-            );
+        
             http_response_code(429);
-
+        
             return [
                 "success" => false,
                 "message" => "Too many upload requests. Try again later."
             ];
         }
+        
+        // Count this upload request
+        $this->rateLimitService->recordFailure(
+            "upload",
+            $identifier,
+            10,
+            900
+        );
+
 
         // 2. Check if files exist
         if (!isset($_FILES["files"])) {
