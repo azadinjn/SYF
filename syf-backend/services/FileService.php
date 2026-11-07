@@ -162,10 +162,31 @@ class FileService {
                 );
             }
 
-            if ($error !== UPLOAD_ERR_OK) {
+           if ($error !== UPLOAD_ERR_OK) {
+
+            if (
+                $error === UPLOAD_ERR_INI_SIZE ||
+                $error === UPLOAD_ERR_FORM_SIZE
+            ) {
                 throw new InvalidArgumentException(
-                    "A file could not be uploaded."
+                    "Uploaded file exceeds the allowed size.",
+                    413
                 );
+            }
+
+            if (
+                $error === UPLOAD_ERR_NO_TMP_DIR ||
+                $error === UPLOAD_ERR_CANT_WRITE ||
+                $error === UPLOAD_ERR_EXTENSION
+            ) {
+                throw new RuntimeException(
+                    "Server failed to process the uploaded file."
+                );
+            }
+
+            throw new InvalidArgumentException(
+                "File upload failed."
+            );
             }
 
             if (
@@ -452,9 +473,17 @@ class FileService {
 
         } catch (Throwable $e) {
 
-            // Remove files already moved during this operation
-            $this->deleteStoredFiles($storedFiles);
-
+            try {
+                $deleted = $this->deleteStoredFiles($storedFiles);
+        
+                if (!$deleted) {
+                    error_log("[FileService] Some uploaded files could not be deleted during cleanup.");
+                }
+        
+            } catch (Throwable $cleanupError) {
+                error_log("[FileService] Cleanup exception: " . $cleanupError->getMessage());
+            }
+        
             throw $e;
         }
 

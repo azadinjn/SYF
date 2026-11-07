@@ -67,11 +67,39 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     ]);
 }
 
+$contentType = $_SERVER["CONTENT_TYPE"] ?? "";
+
+if (stripos($contentType, "application/json") !== 0) {
+    sendPackageJson(415, [
+        "success" => false,
+        "message" => "Unsupported content type."
+    ]);
+}
+
+// Check request body size
+$maxRequestSize = 4096;
+
+$contentLength = (int) ($_SERVER["CONTENT_LENGTH"] ?? 0);
+
+if ($contentLength > $maxRequestSize) {
+    sendPackageJson(413, [
+        "success" => false,
+        "message" => "Request body is too large."
+    ]);
+}
+
 
 // ______________________________________________
 // 6. Read JSON request body
 
 $rawInput = file_get_contents("php://input");
+
+if (strlen($rawInput) > $maxRequestSize) {
+    sendPackageJson(413, [
+        "success" => false,
+        "message" => "Request body is too large."
+    ]);
+}
 
 $data = json_decode($rawInput, true);
 

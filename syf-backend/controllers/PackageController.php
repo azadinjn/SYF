@@ -36,8 +36,43 @@ class PackageController {
                 );
             }
 
-            $code = $data["code"] ?? null;
+            // Validate allowed fields
+
+            $allowedFields = ["code", "password"];
+
+            $extraFields = array_diff(
+                array_keys($data),
+                $allowedFields
+            );
+
+            if (!empty($extraFields)) {
+                throw new InvalidArgumentException(
+                    "Unexpected request fields."
+                );
+            }
+
+            // Validate code
+
+            if (
+                !isset($data["code"]) ||
+                !is_string($data["code"])
+            ) {
+                throw new InvalidArgumentException(
+                    "Invalid package code."
+                );
+            }
+
+            // Validate password
+
             $password = $data["password"] ?? "";
+
+            if (!is_string($password)) {
+                throw new InvalidArgumentException(
+                    "Invalid password format."
+                );
+            }
+
+            $code = $data["code"];
 
             $identifier = $_SERVER["REMOTE_ADDR"] ?? "unknown";
 
@@ -63,13 +98,6 @@ class PackageController {
                     );
 
             } catch (InvalidArgumentException $e) {
-
-                $this->rateLimitService->recordFailure(
-                    "package_lookup",
-                    $identifier,
-                    20,
-                    900
-                );
 
                 throw $e;
 

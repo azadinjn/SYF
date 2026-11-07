@@ -187,6 +187,7 @@ class PackageService {
 
                 if ((int) $mysqlErrorCode !== 1062) {
                     throw $e;
+                
                 }
 
                 // Retry only when the generated code already exists
@@ -323,7 +324,22 @@ class PackageService {
 
             // 12. Remove files stored during this operation
 
-            $this->fileService->deleteStoredFiles($storedFiles);
+            try {
+                $deleted = $this->fileService->deleteStoredFiles($storedFiles);
+
+                if (!$deleted) {
+                    error_log(
+                        "[PackageService] Some files could not be deleted during cleanup."
+                    );
+                }
+
+            } catch (Throwable $cleanupError) {
+
+                error_log(
+                    "[PackageService] Cleanup exception: " .
+                    $cleanupError->getMessage()
+                );
+            }
 
             // Preserve the original error
 

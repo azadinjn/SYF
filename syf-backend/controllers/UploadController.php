@@ -101,14 +101,14 @@ class UploadController {
 
         } catch (InvalidArgumentException $e) {
 
-            // Expected validation errors
-            http_response_code(400);
-
+            $statusCode = $e->getCode() === 413 ? 413 : 400;
+        
+            http_response_code($statusCode);
+        
             return [
                 "success" => false,
                 "message" => $e->getMessage()
             ];
-
         } catch (Throwable $e) {
 
             // Log internal errors
