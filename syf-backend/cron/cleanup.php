@@ -1,7 +1,5 @@
 <?php
 
-// منع تشغيل الملف من المتصفح
-// هذا الملف مخصص للتشغيل عبر PHP CLI أو Cron Job
 if (PHP_SAPI !== "cli") {
     http_response_code(403);
     exit("Access denied.");
@@ -12,17 +10,17 @@ require_once __DIR__ . "/../services/CleanupService.php";
 
 try {
 
-    // الاتصال بقاعدة البيانات
+   
     $database = new Database();
     $db = $database->connect();
 
-    // إنشاء CleanupService
+   
     $cleanupService = new CleanupService($db);
 
-    // تنظيف Packages المنتهية الصلاحية
+    
     $result = $cleanupService->cleanupExpiredPackages();
 
-    // عرض النتيجة
+    
     echo "====================================\n";
     echo "SYF - Automatic Cleanup\n";
     echo "====================================\n";

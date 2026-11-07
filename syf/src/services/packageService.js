@@ -1,5 +1,5 @@
-
-const API_URL = "http://localhost/syf-backend/api/package.php";
+import { API_BASE_URL } from "../config/api";
+const API_URL = `${API_BASE_URL}/package.php`;
 
 export async function searchPackage(code, password = "") {
   const response = await fetch(API_URL, {

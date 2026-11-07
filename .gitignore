@@ -1,0 +1,100 @@
+
+# ==========================================
+# SYF - React + Vite + PHP + MySQL
+# ==========================================
+
+# ---------- Node.js / React ----------
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+**/dist/
+**/build/
+
+# Vite
+.vite/
+**/.vite/
+
+# npm / yarn / pnpm logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Package manager caches
+.npm/
+.yarn/cache/
+.pnpm-store/
+
+# ---------- Environment & Secrets ----------
+.env.development
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Local configuration
+*.local
+*.local.php
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ---------- PHP ----------
+vendor/
+composer.phar
+
+# PHP errors and logs
+*.log
+error_log
+php_errors.log
+
+# PHP temporary files
+*.tmp
+*.temp
+
+# PHPUnit
+.phpunit.cache/
+.phpunit.result.cache
+
+# ---------- Backend Storage ----------
+syf-backend/storage/files/*
+!syf-backend/storage/files/.gitkeep
+
+syf-backend/storage/temp/*
+!syf-backend/storage/temp/.gitkeep
+
+# ---------- Database Backups ----------
+*.sql.bak
+*.sql.backup
+*.dump
+database-backup/
+db-backups/
+
+# ---------- Operating System ----------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ---------- Editors / IDEs ----------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ---------- Debugging ----------
+debug.log
+*.stackdump
+
+# ---------- Miscellaneous ----------
+.cache/
+.temp/
+.tmp/
+coverage/
+.parcel-cache/

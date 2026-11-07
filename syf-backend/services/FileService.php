@@ -202,9 +202,16 @@ class FileService {
 
             $size = (int) $size;
 
-            if ($size <= 0 || $size > $this->maxFileSize) {
+            if ($size <= 0) {
                 throw new InvalidArgumentException(
                     "A file is invalid or not allowed."
+                );
+            }
+
+            if ($size > $this->maxFileSize) {
+                throw new InvalidArgumentException(
+                    "Uploaded file exceeds the allowed size.",
+                    413
                 );
             }
 
@@ -220,10 +227,11 @@ class FileService {
 
         // 5. Check total size
         if ($this->calculateTotalSize($files) > $this->maxTotalSize) {
-            throw new InvalidArgumentException(
-                "Total file size exceeds 10 MB."
-            );
-        }
+        throw new InvalidArgumentException(
+            "Total file size exceeds 10 MB.",
+            413
+        );
+    }
 
         return true;
     }

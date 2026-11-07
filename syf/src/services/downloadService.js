@@ -1,5 +1,5 @@
-
-const API_URL = "http://localhost/syf-backend/api/download.php";
+import { API_BASE_URL } from "../config/api";
+const API_URL = `${API_BASE_URL}/download.php`;
 
 function getFilename(contentDisposition, fallback) {
   if (!contentDisposition) return fallback;

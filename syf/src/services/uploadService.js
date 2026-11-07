@@ -1,5 +1,5 @@
-
-const API_URL = "http://localhost/syf-backend/api/upload.php";
+import { API_BASE_URL } from "../config/api";
+const API_URL = `${API_BASE_URL}/upload.php`;
 
 export async function uploadPackage(formData) {
   const response = await fetch(API_URL, {
