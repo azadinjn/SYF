@@ -6,6 +6,7 @@ import Header from "./components/layout/Header.jsx";
 import Upload from "./pages/Upload.jsx";
 import Code from "./pages/Code.jsx";
 import Download from "./pages/Download.jsx";
+import Home from "./pages/Home.jsx";
 
 import "./App.css";
 
@@ -15,7 +16,7 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Navigate to="/upload" replace />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/upload" element={<Upload />} />
 
