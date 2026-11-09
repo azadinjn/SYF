@@ -9,6 +9,8 @@ import Download from "./pages/Download.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import Contact from "./pages/Contact.jsx";
+
 
 import "./App.css";
 
@@ -18,6 +20,8 @@ function App() {
       <Header />
 
       <Routes>
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/faq" element={<FAQ />} />
 
         <Route path="/about" element={<About />} />
