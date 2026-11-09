@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 import Header from "./components/layout/Header.jsx";
 
@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 
 import "./App.css";
@@ -41,7 +42,7 @@ function App() {
 
         <Route path="/download/:code" element={<Download />} />
 
-        <Route path="*" element={<Navigate to="/upload" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
