@@ -38,6 +38,10 @@ function Header() {
           <NavLink to="/about" className={linkStyle}>
             About
           </NavLink>
+
+          <NavLink to="/faq" className={linkStyle}>
+            FAQ
+          </NavLink>
         </nav>
       </div>
     </header>
