@@ -42,6 +42,10 @@ function Header() {
           <NavLink to="/faq" className={linkStyle}>
             FAQ
           </NavLink>
+
+          <NavLink to="/contact" className={linkStyle}>
+            Contact
+          </NavLink>
         </nav>
       </div>
     </header>
