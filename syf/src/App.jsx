@@ -11,6 +11,7 @@ import About from "./pages/About.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import Contact from "./pages/Contact.jsx";
 import Privacy from "./pages/Privacy.jsx";
+import Terms from "./pages/Terms.jsx";
 
 
 import "./App.css";
@@ -21,6 +22,9 @@ function App() {
       <Header />
 
       <Routes>
+        
+        <Route path="/terms" element={<Terms />} />
+
         <Route path="/privacy" element={<Privacy />} />
 
         <Route path="/contact" element={<Contact />} />

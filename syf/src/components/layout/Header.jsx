@@ -50,6 +50,10 @@ function Header() {
           <NavLink to="/privacy" className={linkStyle}>
             Privacy
           </NavLink>
+
+          <NavLink to="/terms" className={linkStyle}>
+            Terms
+          </NavLink>
         </nav>
       </div>
     </header>
