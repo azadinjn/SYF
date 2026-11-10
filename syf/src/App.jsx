@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import Header from "./components/layout/Header.jsx";
+import Footer from "./components/layout/Footer.jsx";
 
 import Upload from "./pages/Upload.jsx";
 import Code from "./pages/Code.jsx";
@@ -44,6 +45,8 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      
+       <Footer />
     </BrowserRouter>
   );
 }
