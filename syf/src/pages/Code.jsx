@@ -15,8 +15,8 @@ function Code() {
   const transfer = location.state?.transfer;
 
   const [code, setCode] = useState(
-  location.state?.initialCode || ""
-  );  
+    location.state?.initialCode || ""
+  );
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState("");
 
@@ -48,42 +48,55 @@ function Code() {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8 sm:px-6">
+    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-10 sm:px-6 sm:py-14">
 
-      {transfer && (
-        <>
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-slate-900">
-              Your Files Are Ready!
-            </h1>
+        {transfer && (
+          <>
+            <div className="animate-fade-up space-y-3 text-center">
+              
 
-            <p className="mt-2 text-sm text-slate-500">
-              Your package has been uploaded successfully.
-            </p>
-          </div>
+              <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl">
+                Your Files Are Ready!
+              </h1>
 
-          <CodeDisplay code={transfer.code} />
+              <p className="mx-auto max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+                Your package has been uploaded successfully. Share the code
+                or scan the QR code to access your files.
+              </p>
+            </div>
 
-          <QRCodeDisplay code={transfer.code} />
-        </>
-      )}
+            <div className="grid animate-fade-up grid-cols-1 items-stretch gap-6 md:grid-cols-2">
+              <div className="order-1">
+                <QRCodeDisplay code={transfer.code} />
+              </div>
 
-      <SearchForm
-        code={code}
-        setCode={setCode}
-        isSearching={isSearching}
-        onSearch={handleSearch}
-      />
+              <div className="order-2">
+                <CodeDisplay code={transfer.code} />
+              </div>
+            </div>
+          </>
+        )}
 
-      {error && (
-        <p
-          role="alert"
-          className="rounded-lg bg-red-50 p-3 text-sm text-red-600"
-        >
-          {error}
-        </p>
-      )}
+        <div className="animate-fade-up">
+          <SearchForm
+            code={code}
+            setCode={setCode}
+            isSearching={isSearching}
+            onSearch={handleSearch}
+          />
+        </div>
 
+        {error && (
+          <p
+            role="alert"
+            className="animate-fade-up rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-600"
+          >
+            {error}
+          </p>
+        )}
+
+      </div>
     </main>
   );
 }

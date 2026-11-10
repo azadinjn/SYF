@@ -63,44 +63,55 @@ function Download() {
   const requiresPassword = transfer?.requiresPassword === true;
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8 sm:px-6">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-slate-900">
-          Download Files
-        </h1>
+    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+      <div className="mx-auto flex w-full max-w-4xl flex-col gap-8 px-4 py-10 sm:px-6 sm:py-14">
 
-        <p className="mt-2 text-sm text-slate-500">
-          Access your shared package and download its files.
-        </p>
+        {/* Page Header */}
+        <div className="animate-fade-up space-y-3 text-center">
+
+          <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl">
+            Download Files
+          </h1>
+
+          <p className="mx-auto max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+            Access your shared package and download your files
+            quickly and securely.
+          </p>
+        </div>
+
+        {/* Password or Download Content */}
+        {requiresPassword ? (
+          <div className="animate-fade-up mx-auto w-full max-w-xl">
+            <PasswordForm
+              password={password}
+              setPassword={setPassword}
+              onSubmit={handlePasswordSubmit}
+              isSubmitting={isSubmitting}
+            />
+          </div>
+        ) : (
+          <div className="animate-fade-up flex flex-col gap-6">
+            <PackageInfo packageInfo={transfer} />
+
+            <ReceivedFiles
+              files={transfer.files}
+              code={code}
+              password={accessPassword}
+            />
+          </div>
+        )}
+
+        {/* Error Message */}
+        {error && (
+          <p
+            role="alert"
+            className="animate-fade-up rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-600"
+          >
+            {error}
+          </p>
+        )}
+
       </div>
-
-      {requiresPassword ? (
-        <PasswordForm
-          password={password}
-          setPassword={setPassword}
-          onSubmit={handlePasswordSubmit}
-          isSubmitting={isSubmitting}
-        />
-      ) : (
-        <>
-          <PackageInfo packageInfo={transfer} />
-
-          <ReceivedFiles
-            files={transfer.files}
-            code={code}
-            password={accessPassword}
-          />
-        </>
-      )}
-
-      {error && (
-        <p
-          role="alert"
-          className="rounded-lg bg-red-50 p-3 text-sm text-red-600"
-        >
-          {error}
-        </p>
-      )}
     </main>
   );
 }
