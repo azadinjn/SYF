@@ -11,19 +11,43 @@ function PasswordForm({ password, setPassword, onSubmit, isSubmitting }) {
   }
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6">
-      <h2 className="text-lg font-semibold text-slate-900">
-        Password Protected
-      </h2>
+    <section className="animate-fade-up mx-auto w-full max-w-xl rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
+      <div className="flex flex-col items-center gap-3 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-50 text-marina-700">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.8"
+            stroke="currentColor"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M16.5 10.5V6.75a4.5 4.5 0 0 0-9 0v3.75m-1.5 0h12A1.5 1.5 0 0 1 19.5 12v7.5A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5V12A1.5 1.5 0 0 1 6 10.5Zm6 4.5v1.5"
+            />
+          </svg>
+        </span>
 
-      <p className="mt-2 text-sm text-slate-500">
-        This package requires a password before you can view its files.
-      </p>
+        <div>
+          <h2 className="text-xl font-extrabold text-marina-700">
+            Password Protected
+          </h2>
 
-      <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4">
+          <p className="mt-2 text-sm leading-6 text-slate-500">
+            This package requires a password before you can view its files.
+          </p>
+        </div>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto mt-7 flex w-full max-w-md flex-col gap-4"
+      >
         <label
           htmlFor="packagePassword"
-          className="text-sm font-medium text-slate-700"
+          className="text-sm font-bold text-slate-700"
         >
           Package Password
         </label>
@@ -35,15 +59,41 @@ function PasswordForm({ password, setPassword, onSubmit, isSubmitting }) {
           onChange={(event) => setPassword(event.target.value)}
           placeholder="Enter package password"
           autoComplete="current-password"
-          className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+          className="min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition-colors duration-200 placeholder:text-slate-400 hover:border-marina-200 hover:bg-marina-50/20 focus:border-marina-500 focus:ring-2 focus:ring-marina-100"
         />
 
         <button
           type="submit"
           disabled={password.length === 0 || isSubmitting}
-          className="min-h-12 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-5 py-3 font-bold text-black transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
         >
-          {isSubmitting ? "Verifying..." : "Unlock Package"}
+          {isSubmitting ? (
+            <>
+              <svg
+                className="h-5 w-5 animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4Z"
+                />
+              </svg>
+              Verifying...
+            </>
+          ) : (
+            "Unlock Package"
+          )}
         </button>
       </form>
     </section>
