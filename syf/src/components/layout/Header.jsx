@@ -1,17 +1,17 @@
+
 import { Link, NavLink } from "react-router";
 
 function Header() {
   const linkStyle = ({ isActive }) =>
-  `rounded-lg px-4 py-2 text-sm font-semibold transition ${
-    isActive
-      ? "bg-[#97ebdb] text-black"
-      : "text-slate-600 hover:bg-slate-100 hover:text-black"
-  }`;
+    `rounded-lg px-4 py-2 text-sm font-semibold transition ${
+      isActive
+        ? "bg-[#97ebdb] text-black"
+        : "text-slate-600 hover:bg-slate-100 hover:text-black"
+    }`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
             src="/logo.png"
@@ -20,10 +20,8 @@ function Header() {
           />
         </Link>
 
-        {/* Navigation */}
-
         <nav className="flex items-center gap-2">
-          <NavLink to="/" className={linkStyle}>
+          <NavLink to="/" end className={linkStyle}>
             Home
           </NavLink>
 
@@ -32,27 +30,15 @@ function Header() {
           </NavLink>
 
           <NavLink to="/code" className={linkStyle}>
-            Code
+            Receive
           </NavLink>
 
           <NavLink to="/about" className={linkStyle}>
             About
           </NavLink>
 
-          <NavLink to="/faq" className={linkStyle}>
-            FAQ
-          </NavLink>
-
           <NavLink to="/contact" className={linkStyle}>
             Contact
-          </NavLink>
-
-          <NavLink to="/privacy" className={linkStyle}>
-            Privacy
-          </NavLink>
-
-          <NavLink to="/terms" className={linkStyle}>
-            Terms
           </NavLink>
         </nav>
       </div>
