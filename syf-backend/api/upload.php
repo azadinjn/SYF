@@ -15,7 +15,7 @@ ini_set("log_errors", "1");
 
 $allowedOrigins = [
     "http://localhost:5173",
-    "http://localhost:5174"
+    "http://localhost:5174","http://localhost:4173"
 ];
 
 $origin = $_SERVER["HTTP_ORIGIN"] ?? "";

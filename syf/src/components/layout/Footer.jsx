@@ -11,9 +11,9 @@ function Footer() {
         <div className="flex flex-col items-start">
           <Link to="/" className="mb-4">
             <img
-              src="/logo.png"
+              src="/logo.svg"
               alt="SYF Logo"
-              className="h-14 w-auto object-contain"
+              className="h-10 w-auto object-contain"
             />
           </Link>
 
