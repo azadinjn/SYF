@@ -43,13 +43,13 @@ function Header() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
-        <Link to="/" className="flex shrink-0 items-center" onClick={closeMenu}>
-          <img
-            src="/logo.png"
-            alt="SYF Logo"
-            className="h-12 w-auto object-contain"
-          />
-        </Link>
+       <Link to="/" className="flex shrink-0 items-center" onClick={closeMenu}>
+        <img
+          src="/logo.svg"
+          alt="SYF Logo"
+          className="h-7 w-auto object-contain"
+        />
+      </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-2 md:flex">
