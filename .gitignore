@@ -34,7 +34,7 @@ lerna-debug.log*
 .env.*
 !.env.example
 !.env.sample
-
+/syf-backend/config/database.production.php
 # Local configuration
 *.local
 *.local.php
