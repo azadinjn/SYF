@@ -113,13 +113,13 @@ export default function Upload() {
 
   
 return (
-  <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+  <main className="page-canvas min-h-[calc(100vh-4.5rem)] overflow-hidden">
     <div className="mx-auto flex w-full max-w-3xl min-w-0 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-14">
 
       {/* Page Heading */}
       <div className="animate-fade-up space-y-3 text-center">
 
-        <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl">
+        <h1 className="page-title text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl">
           Upload Your Files
         </h1>
 

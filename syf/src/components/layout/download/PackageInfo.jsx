@@ -90,9 +90,9 @@ function PackageInfo({ packageInfo }) {
   ];
 
   return (
-    <section className="animate-fade-up rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
+    <section className="surface-card animate-fade-up rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
       <div className="flex items-center gap-3">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
+        <span className="icon-tile flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

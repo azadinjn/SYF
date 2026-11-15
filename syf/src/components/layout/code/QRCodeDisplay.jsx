@@ -13,8 +13,8 @@ function QRCodeDisplay({ code }) {
   }
 
   return (
-    <section className="flex h-full min-h-64 flex-col items-center justify-center rounded-2xl border border-marina-100 bg-white p-6 text-center shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
-      <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
+    <section className="flex h-full flex-col items-center justify-center border-b border-marina-100/80 bg-gradient-to-br from-marina-50/45 to-white px-5 py-8 text-center sm:px-8 sm:py-10 md:border-b-0 md:border-r lg:px-10">
+      <span className="icon-tile mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -39,20 +39,20 @@ function QRCodeDisplay({ code }) {
         Scan this code to open the download page.
       </p>
 
-      <div className="my-6 flex w-full items-center justify-center rounded-2xl  p-4 sm:p-5">
+      <div className="my-5 flex w-full items-center justify-center rounded-2xl bg-white p-3 shadow-sm ring-1 ring-marina-100 sm:my-6 sm:p-4">
         <QRCodeSVG
           value={downloadUrl}
-          size={260}
+          size={300}
           level="H"
           includeMargin
-          className="h-auto w-full max-w-[260px]"
+          className="h-auto w-full max-w-[300px]"
         />
       </div>
 
       <button
         type="button"
         onClick={handleCopyLink}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-6 py-3 font-bold text-black transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500"
+        className="action-button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-6 py-3 font-bold text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -21,7 +21,7 @@ export default function UploadZone({ onFilesSelected }) {
 
   return (
     <div
-      className="group w-full min-w-0 rounded-3xl border-2 border-dashed border-marina-300 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-marina-500 hover:bg-marina-50/40 hover:shadow-lg sm:p-10"
+      className="surface-card group w-full min-w-0 rounded-3xl border-2 border-dashed border-marina-300 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-marina-500 hover:bg-marina-50/40 hover:shadow-lg sm:p-10"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
@@ -30,7 +30,7 @@ export default function UploadZone({ onFilesSelected }) {
         className="flex min-h-48 cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl text-center outline-none focus-within:ring-2 focus-within:ring-marina-500 focus-within:ring-offset-4 sm:min-h-56"
       >
         {/* Upload Icon */}
-        <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-marina-100 text-marina-700 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:scale-110 sm:h-20 sm:w-20">
+        <span className="icon-tile flex h-16 w-16 items-center justify-center rounded-2xl bg-marina-100 text-marina-700 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 sm:h-20 sm:w-20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

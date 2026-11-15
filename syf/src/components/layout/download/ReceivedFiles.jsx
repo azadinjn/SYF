@@ -29,10 +29,10 @@ function ReceivedFiles({ files, code, password }) {
   }
 
   return (
-    <section className="animate-fade-up rounded-2xl border border-marina-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-6">
+    <section className="surface-card animate-fade-up rounded-2xl border border-marina-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-6">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex items-center gap-3">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
+          <span className="icon-tile flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -64,7 +64,7 @@ function ReceivedFiles({ files, code, password }) {
           type="button"
           onClick={handleDownloadAll}
           disabled={isDownloadingAll}
-          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-5 py-3 text-sm font-bold text-black transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 sm:w-auto"
+          className="action-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-5 py-3 text-sm font-bold text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 sm:w-auto"
         >
           {isDownloadingAll ? (
             <>

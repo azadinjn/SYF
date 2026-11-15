@@ -12,11 +12,11 @@ export default function SelectedFiles({ files, onRemove }) {
     <div className="w-full min-w-0 space-y-4">
 
       {/* Selected Files Summary */}
-      <div className="rounded-2xl border border-marina-100 bg-white p-4 shadow-sm sm:p-5">
+      <div className="surface-card rounded-2xl border border-marina-100 bg-white p-4 shadow-sm sm:p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
 
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
+            <span className="icon-tile flex h-10 w-10 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

@@ -1,10 +1,10 @@
 
 export default function SelectedItem({ file, onRemove }) {
   return (
-    <div className="group flex w-full min-w-0 items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-marina-300 hover:shadow-md sm:gap-4 sm:p-4">
+    <div className="surface-card group flex w-full min-w-0 items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-marina-300 hover:shadow-md sm:gap-4 sm:p-4">
 
       {/* File Icon */}
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700 transition-colors duration-200 group-hover:bg-marina-100 sm:h-12 sm:w-12">
+      <span className="icon-tile flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700 transition-colors duration-200 group-hover:bg-marina-100 sm:h-12 sm:w-12">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

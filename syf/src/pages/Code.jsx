@@ -48,7 +48,7 @@ function Code() {
   }
 
   return (
-    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+    <main className="page-canvas min-h-[calc(100vh-4.5rem)] overflow-hidden">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-10 sm:px-6 sm:py-14">
 
         {transfer && (
@@ -56,7 +56,7 @@ function Code() {
             <div className="animate-fade-up space-y-3 text-center">
               
 
-              <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl">
+              <h1 className="page-title text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl">
                 Your Files Are Ready!
               </h1>
 
@@ -66,14 +66,9 @@ function Code() {
               </p>
             </div>
 
-            <div className="grid animate-fade-up grid-cols-1 items-stretch gap-6 md:grid-cols-2">
-              <div className="order-1">
-                <QRCodeDisplay code={transfer.code} />
-              </div>
-
-              <div className="order-2">
-                <CodeDisplay code={transfer.code} />
-              </div>
+            <div className="surface-card animate-fade-up grid overflow-hidden border border-marina-100 md:grid-cols-[1.15fr_.85fr]">
+              <QRCodeDisplay code={transfer.code} />
+              <CodeDisplay code={transfer.code} />
             </div>
           </>
         )}

@@ -41,11 +41,11 @@ export default function PackageSettings({ onSettingsChange }) {
   const labelStyle = "text-sm font-bold text-slate-700";
 
   return (
-    <section className="w-full min-w-0 space-y-6 rounded-2xl border border-marina-100 bg-white p-4 shadow-sm sm:p-6">
+    <section className="surface-card w-full min-w-0 space-y-6 rounded-2xl border border-marina-100 bg-white p-4 shadow-sm sm:p-6">
 
       {/* Centered Header */}
       <div className="flex flex-col items-center gap-3 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
+        <span className="icon-tile flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
