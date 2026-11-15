@@ -8,7 +8,7 @@ export default function UploadActions({
   return (
     <div className="flex w-full min-w-0 justify-center pt-3">
       <button
-        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-8 py-3 text-base font-extrabold text-black shadow-sm transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:shadow-none sm:w-auto sm:min-w-48"
+        className="action-button inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-8 py-3 text-base font-extrabold text-black shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:shadow-none sm:w-auto sm:min-w-48"
         disabled={files.length === 0 || totalSizeExceeded || isUploading}
         onClick={onUpload}
       >

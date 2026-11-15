@@ -55,7 +55,7 @@ function About() {
   ];
 
   return (
-    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+    <main className="page-canvas min-h-[calc(100vh-4.5rem)] overflow-hidden">
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-12 sm:px-6 sm:py-16 lg:gap-20">
 
@@ -63,7 +63,7 @@ function About() {
         <section className="animate-fade-up mx-auto max-w-3xl space-y-5 text-center">
           
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-marina-700 sm:text-5xl">
+          <h1 className="page-title text-4xl font-extrabold tracking-tight text-marina-700 sm:text-5xl">
             About SYF
           </h1>
 
@@ -133,7 +133,7 @@ function About() {
             {values.map((value, index) => (
               <article
                 key={value.title}
-                className={`animate-fade-up rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 hover:bg-marina-50/20 animation-delay-${index === 0 ? "200" : "300"}`}
+                className={`surface-card animate-fade-up rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 hover:bg-marina-50/20 animation-delay-${index === 0 ? "200" : "300"}`}
               >
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
                   {value.icon}
@@ -152,7 +152,7 @@ function About() {
         </section>
 
         {/* Why Choose SYF Section */}
-        <section className="animate-fade-up rounded-3xl border border-marina-100 bg-white p-6 shadow-sm sm:p-10">
+        <section className="surface-card animate-fade-up rounded-3xl border border-marina-100 bg-white p-6 shadow-sm sm:p-10">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
 
             <div className="space-y-4">

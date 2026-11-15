@@ -149,13 +149,13 @@ function FAQ() {
   };
 
   return (
-    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+    <main className="page-canvas min-h-[calc(100vh-4.5rem)] overflow-hidden">
       {/* Hero Section */}
       <section className="px-4 pb-12 pt-16 text-center sm:pb-16 sm:pt-20">
         <div className="mx-auto max-w-3xl animate-fade-up">
           
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl md:text-5xl">
+          <h1 className="page-title text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl md:text-5xl">
             Frequently Asked Questions
           </h1>
 
@@ -185,7 +185,7 @@ function FAQ() {
                 </h2>
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-marina-100 bg-white shadow-sm">
+              <div className="surface-card overflow-hidden rounded-2xl border border-marina-100 bg-white shadow-sm">
                 {section.questions.map((item, questionIndex) => {
                   const id = `${sectionIndex}-${questionIndex}`;
                   const isOpen = openQuestion === id;
@@ -245,7 +245,7 @@ function FAQ() {
         </div>
 
         {/* Contact CTA */}
-        <div className="mt-16 rounded-3xl border border-marina-100 bg-gradient-to-br from-marina-50 to-white px-5 py-10 text-center sm:px-10">
+        <div className="surface-card mt-16 rounded-3xl border border-marina-100 bg-gradient-to-br from-marina-50 to-white px-5 py-10 text-center sm:px-10">
           <h2 className="text-2xl font-bold text-marina-700">
             Still Have Questions?
           </h2>
@@ -257,7 +257,7 @@ function FAQ() {
 
           <a
             href="/contact"
-            className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-marina-300 px-7 py-3 font-bold text-black transition-colors duration-200 hover:bg-marina-100"
+            className="action-button mt-6 inline-flex min-h-12 items-center justify-center rounded-xl border px-7 py-3 font-bold"
           >
             Contact Us
           </a>

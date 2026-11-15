@@ -9,8 +9,8 @@ function CodeDisplay({ code }) {
   }
 
   return (
-    <section className="flex h-full min-h-64 flex-col items-center justify-center rounded-2xl border border-marina-100 bg-white p-6 text-center shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
-      <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
+    <section className="flex h-full min-h-[26rem] flex-col items-center justify-center bg-white p-6 text-center sm:p-8 lg:p-10">
+      <span className="icon-tile mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -35,14 +35,14 @@ function CodeDisplay({ code }) {
         Share this code with the person receiving your files.
       </p>
 
-      <p className="my-6 break-all text-4xl font-extrabold tracking-[0.25em] text-marina-700 sm:text-5xl">
+      <p className="my-6 break-all text-4xl font-extrabold tracking-[0.25em] text-marina-700 sm:text-5xl lg:text-6xl">
         {code}
       </p>
 
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-6 py-3 font-bold text-black transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500"
+        className="action-button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-6 py-3 font-bold text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

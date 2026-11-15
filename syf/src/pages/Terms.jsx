@@ -82,13 +82,13 @@ function Terms() {
   ];
 
   return (
-    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+    <main className="page-canvas min-h-[calc(100vh-4.5rem)] overflow-hidden">
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-10 px-4 py-10 sm:px-6 sm:py-14">
 
         {/* Hero Section */}
         <section className="animate-fade-up space-y-4 text-center">
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl lg:text-5xl">
+          <h1 className="page-title text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl lg:text-5xl">
             Terms of Service
           </h1>
 
@@ -103,7 +103,7 @@ function Terms() {
         </section>
 
         {/* Terms Content */}
-        <section className="animate-fade-up rounded-3xl border border-marina-100 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
+        <section className="surface-card animate-fade-up rounded-3xl border border-marina-100 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
 
           <div className="mb-8 flex items-center gap-3 border-b border-marina-100 pb-6">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-marina-50 text-marina-700">

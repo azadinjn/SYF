@@ -11,9 +11,9 @@ function PasswordForm({ password, setPassword, onSubmit, isSubmitting }) {
   }
 
   return (
-    <section className="animate-fade-up mx-auto w-full max-w-xl rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
+    <section className="surface-card animate-fade-up mx-auto w-full max-w-xl rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 sm:p-8">
       <div className="flex flex-col items-center gap-3 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-50 text-marina-700">
+        <span className="icon-tile flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-50 text-marina-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -65,7 +65,7 @@ function PasswordForm({ password, setPassword, onSubmit, isSubmitting }) {
         <button
           type="submit"
           disabled={password.length === 0 || isSubmitting}
-          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-5 py-3 font-bold text-black transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
+          className="action-button inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-5 py-3 font-bold text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
         >
           {isSubmitting ? (
             <>

@@ -52,14 +52,14 @@ function Contact() {
     "mb-2 block text-sm font-bold text-slate-700";
 
   return (
-    <main className="min-h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-b from-marina-50/40 via-white to-white">
+    <main className="page-canvas min-h-[calc(100vh-4.5rem)] overflow-hidden">
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-14 px-4 py-10 sm:px-6 sm:py-14 lg:gap-16">
 
         {/* Hero Section */}
         <section className="animate-fade-up mx-auto max-w-3xl space-y-4 text-center">
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl lg:text-5xl">
+          <h1 className="page-title text-3xl font-extrabold tracking-tight text-marina-700 sm:text-4xl lg:text-5xl">
             Contact Us
           </h1>
 
@@ -90,7 +90,7 @@ function Contact() {
               </p>
             </div>
 
-            <article className="rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 hover:bg-marina-50/20">
+            <article className="surface-card rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 hover:bg-marina-50/20">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -108,7 +108,7 @@ function Contact() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 hover:bg-marina-50/20">
+            <article className="surface-card rounded-2xl border border-marina-100 bg-white p-6 shadow-sm transition-colors duration-200 hover:border-marina-300 hover:bg-marina-50/20">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-marina-50 text-marina-700">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6">
                   <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" />
@@ -128,7 +128,7 @@ function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-3xl border border-marina-100 bg-white p-5 shadow-sm sm:p-8 lg:col-span-3">
+          <div className="surface-card rounded-3xl border border-marina-100 bg-white p-5 shadow-sm sm:p-8 lg:col-span-3">
             <div className="mb-7 space-y-2 text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-50 text-marina-700">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
@@ -230,7 +230,7 @@ function Contact() {
               <button
                 type="submit"
                 disabled={isSending}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-6 py-3 text-sm font-extrabold text-black shadow-sm transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
+                className="action-button inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-marina-300 bg-marina-100 px-6 py-3 text-sm font-extrabold text-black shadow-sm transition-colors duration-200 hover:border-marina-500 hover:bg-marina-100/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marina-500 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
               >
                 {isSending ? (
                   <>
